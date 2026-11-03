@@ -4,12 +4,12 @@ import { useCountUp, useReveal } from '../hooks/motion'
 import { SectionHeading } from './ui'
 
 // Drop a photo at src/assets/profile.jpg (or .png/.webp) and it replaces the placeholder automatically.
-const photos = import.meta.glob('../assets/profile.{jpg,jpeg,png,webp}', {
-  eager: true,
-  query: '?url',
-  import: 'default',
-}) as Record<string, string>
-const photo = Object.values(photos)[0]
+// const photos = import.meta.glob('../assets/profile.{jpg,jpeg,png,webp}', {
+//   eager: true,
+//   query: '?url',
+//   import: 'default',
+// }) as Record<string, string>
+//const photo = Object.values(photos)[0]
 
 function Stat({ value, suffix, label }: { value: number; suffix: string; label: string }) {
   const ref = useCountUp(value)
