@@ -1,0 +1,106 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-ink: #0b0c0f;
+  --color-surface: #111319;
+  --color-raise: #171a22;
+  --color-line: rgb(255 255 255 / 0.09);
+  --color-fg: #e9ebf1;
+  --color-mute: #9aa1b4;
+  --color-blue: #4f7cff;
+  --color-violet: #8b6cf6;
+  --color-ok: #3ddc97;
+
+  --font-display: 'Bricolage Grotesque', 'Inter Tight', system-ui, sans-serif;
+  --font-serif: 'Instrument Serif', Georgia, serif;
+  --font-sans: 'Inter Tight', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--color-ink);
+}
+
+body {
+  margin: 0;
+  background: var(--color-ink);
+  color: var(--color-fg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+section[id] {
+  scroll-margin-top: 4rem;
+}
+
+::selection {
+  background: var(--color-blue);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-blue);
+  outline-offset: 3px;
+}
+
+/* Elements animated by anime.js start hidden only when JS runs and motion is allowed. */
+html.motion .reveal {
+  opacity: 0;
+}
+
+.mono-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-mute);
+}
+
+.char {
+  display: inline-block;
+  transition: translate 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), color 0.35s;
+}
+.char:hover {
+  translate: 0 -4px;
+  color: var(--color-blue);
+}
+.char-wrap {
+  padding: 0.1em 0;
+  margin: -0.1em 0;
+}
+
+.grid-bg {
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.045) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 70% 60% at 60% 40%, #000 30%, transparent 78%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 60% 40%, #000 30%, transparent 78%);
+}
+
+.text-gradient {
+  background: linear-gradient(100deg, var(--color-blue), var(--color-violet));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+dialog::backdrop {
+  background: rgb(5 6 8 / 0.78);
+  backdrop-filter: blur(6px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
